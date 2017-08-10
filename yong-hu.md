@@ -101,12 +101,52 @@ Parse.User.become("session-token-here").then((user) => {
 }).catch( error=>{
   // 无法验证令牌
 });
-
 ```
 
+### 用户对象的安全
+
+  
 
 
+Parse.User类默认保护。存储在Parse.User中的数据只能由该用户修改。默认情况下，任何客户端仍然可以读取数据。因此，一些Parse.User对象被认证并可以被修改，而其他对象是只读的。
 
+具体来说，除非使用经过身份验证的方法（如logIn或signUp）获取Parse.User，否则您无法调用任何保存或删除方法。这确保只有用户可以更改自己的数据。
+
+安全策略说明:
+
+```js
+
+var user = Parse.User.logIn("my_username", "my_password", {
+  success: function(user) {
+    user.set("username", "my_new_username");  // attempt to change username
+    user.save(null, {
+      success: function(user) {
+        // This succeeds, since the user was authenticated on the device
+
+        // Get the user from a non-authenticated method
+        var query = new Parse.Query(Parse.User);
+        query.get(user.objectId, {
+          success: function(userAgain) {
+            userAgain.set("username", "another_username");
+            userAgain.save(null, {
+              error: function(userAgain, error) {
+                // This will error, since the Parse.User is not authenticated
+              }
+            });
+          }
+        });
+      }
+    });
+  }
+});
+```
+
+从Parse.User.current（）获取的Parse.User将始终被认证。  
+如果需要检查Parse.User是否经过身份验证，则可以调用已认证的方法。您不需要通过经过验证的方法获取的Parse.User对象来检查身份验证。
+
+### 其它对象的安全
+
+适用于Parse.User的相同安全模型可以应用于其他对象。对于任何对象，您可以指定哪些用户可以读取对象，哪些用户可以修改对象。为了支持这种类型的安全性，每个对象都有一个由Parse.ACL类实现的　ACL\(access control list\) 列表。
 
 
 
