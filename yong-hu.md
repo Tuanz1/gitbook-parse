@@ -57,5 +57,20 @@ Parse.User.logIn('myusername','mypasswd').then( user =>{
     });
 ```
 
+### 邮箱验证
+
+  
+
+
+在应用程序设置中启用电子邮件验证允许应用程序为具有确认电子邮件地址的用户预留部分体验。电子邮件验证将emailVerified键添加到Parse.User对象。当Parse.User的电子邮件设置或修改时，emailVerified设置为false。解析然后向用户发送一个将将emailVerified设置为true的链接
+
+emailVerified属性有三种状态
+
+> true - 用户通过点击通过电子邮件发送给他们的链接来确认他或她的电子邮件地址。解析。当用户帐户首次创建时，用户永远不会有真正的价值。
+
+```js
+
+```
+
 
 
