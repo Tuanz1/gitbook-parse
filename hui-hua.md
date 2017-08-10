@@ -19,6 +19,11 @@ Session对象具有以下特殊字段：
 > > action 可以具有值：login，signup，create或upgrade。create操作是当开发人员通过保存Session对象手动创建会话。upgrade操作是当用户从旧会话令牌升级到可撤销会话时。
 > >
 > > authProvider可以有值：password，anonymous，Facebook或Twitter。
+>
+>   
+>
+>
+> restricted（readonly）：布尔值是否限制此会话。
 
 
 
