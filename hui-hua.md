@@ -20,10 +20,7 @@ Session对象具有以下特殊字段：
 > >
 > > authProvider可以有值：password，anonymous，Facebook或Twitter。
 >
->   
->
->
-> restricted（readonly）：布尔值是否限制此会话。
+> restricted（只读）：布尔值是否限制此会话。
 
 
 
