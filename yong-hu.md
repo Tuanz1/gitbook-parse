@@ -77,9 +77,9 @@ emailVerified属性有三种状态
 ```js
 var currentUser = Parse.User.current();
 if (currentUser) {
-    // do stuff with the user
+    // 用户正常逻辑
 } else {
-    // show the signup or login page
+    // 返回登录界面
 }
 ```
 
