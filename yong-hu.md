@@ -105,9 +105,6 @@ Parse.User.become("session-token-here").then((user) => {
 
 ### 用户对象的安全
 
-  
-
-
 Parse.User类默认保护。存储在Parse.User中的数据只能由该用户修改。默认情况下，任何客户端仍然可以读取数据。因此，一些Parse.User对象被认证并可以被修改，而其他对象是只读的。
 
 具体来说，除非使用经过身份验证的方法（如logIn或signUp）获取Parse.User，否则您无法调用任何保存或删除方法。这确保只有用户可以更改自己的数据。
@@ -115,7 +112,6 @@ Parse.User类默认保护。存储在Parse.User中的数据只能由该用户修
 安全策略说明:
 
 ```js
-
 var user = Parse.User.logIn("my_username", "my_password", {
   success: function(user) {
     user.set("username", "my_new_username");  // attempt to change username
@@ -144,9 +140,48 @@ var user = Parse.User.logIn("my_username", "my_password", {
 从Parse.User.current（）获取的Parse.User将始终被认证。  
 如果需要检查Parse.User是否经过身份验证，则可以调用已认证的方法。您不需要通过经过验证的方法获取的Parse.User对象来检查身份验证。
 
-### 其它对象的安全
+### 其它对象的安全\(这个部分不是特别熟悉\)
 
 适用于Parse.User的相同安全模型可以应用于其他对象。对于任何对象，您可以指定哪些用户可以读取对象，哪些用户可以修改对象。为了支持这种类型的安全性，每个对象都有一个由Parse.ACL类实现的　ACL\(access control list\) 列表。
 
+使用Parse.ACL的最简单方法是指定对象只能由单个用户读取或写入。这通过使用Parse.User初始化Parse.ACL来完成：new Parse.ACL（user）生成一个限制对该用户的访问的Parse.ACL。与对象的任何其他属性一样，对象的ACL被保存时被更新。因此，创建只能由当前用户访问的私人注释：
 
+```js
+
+let Note = Parse.Object.extend("Note");
+let privateNote = new Note();
+privateNote.set("content", "This note is private!");
+privateNote.setACL(new Parse.ACL(Parse.User.current()));
+privateNote.save();
+
+
+```
+
+此笔记只能由当前用户访问，但该用户登录的任何设备都可以访问此功能。此功能对于要在多个设备上访问用户数据的应用程序（例如个人待办事项）很有用名单。
+
+  
+
+
+也可以在每个用户的基础上授予权限。您可以使用setReadAccess和setWriteAccess单独添加到Parse.ACL的权限。例如，假设您有一个消息将发送到一组几个用户，其中每个用户都有权读取和删除该消息：
+
+```js
+
+let Message = Parse.Object.extend("Message");
+let groupMessage = new Message();
+let groupACL = new Parse.ACL();
+
+// userList is an array with the users we are sending this message to.
+for (var i = 0; i < userList.length; i++) {
+  groupACL.setReadAccess(userList[i], true);
+  groupACL.setWriteAccess(userList[i], true);
+}
+
+groupMessage.setACL(groupACL);
+groupMessage.save();
+```
+
+  
+
+
+您也可以使用setPublicReadAccess和setPublicWriteAccess一次向所有用户授予权限。这允许模式，如在留言板上发表评论。例如，创建一个只能由作者编辑的帖子，但可以由任何人阅读：
 
