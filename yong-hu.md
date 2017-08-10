@@ -147,25 +147,18 @@ var user = Parse.User.logIn("my_username", "my_password", {
 使用Parse.ACL的最简单方法是指定对象只能由单个用户读取或写入。这通过使用Parse.User初始化Parse.ACL来完成：new Parse.ACL（user）生成一个限制对该用户的访问的Parse.ACL。与对象的任何其他属性一样，对象的ACL被保存时被更新。因此，创建只能由当前用户访问的私人注释：
 
 ```js
-
 let Note = Parse.Object.extend("Note");
 let privateNote = new Note();
 privateNote.set("content", "This note is private!");
 privateNote.setACL(new Parse.ACL(Parse.User.current()));
 privateNote.save();
-
-
 ```
 
 此笔记只能由当前用户访问，但该用户登录的任何设备都可以访问此功能。此功能对于要在多个设备上访问用户数据的应用程序（例如个人待办事项）很有用名单。
 
-  
-
-
 也可以在每个用户的基础上授予权限。您可以使用setReadAccess和setWriteAccess单独添加到Parse.ACL的权限。例如，假设您有一个消息将发送到一组几个用户，其中每个用户都有权读取和删除该消息：
 
 ```js
-
 let Message = Parse.Object.extend("Message");
 let groupMessage = new Message();
 let groupACL = new Parse.ACL();
@@ -180,8 +173,19 @@ groupMessage.setACL(groupACL);
 groupMessage.save();
 ```
 
-  
-
-
 您也可以使用setPublicReadAccess和setPublicWriteAccess一次向所有用户授予权限。这允许模式，如在留言板上发表评论。例如，创建一个只能由作者编辑的帖子，但可以由任何人阅读：
+
+```js
+
+let publicPost = new Post();
+let postACL = new Parse.ACL(Parse.User.current());
+postACL.setPublicReadAccess(true);
+publicPost.setACL(postACL);
+publicPost.save();
+
+```
+
+
+
+
 
