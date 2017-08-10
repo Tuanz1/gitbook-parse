@@ -189,10 +189,17 @@ publicPost.save();
 
 ### 重置用户密码
 
-  
+这是一个事实，一旦你将密码引入系统，用户就会忘记它们。在这种情况下，Parse 的库提供了一种让他们安全地重置密码的方法。要启动密码重设流程，请向用户询问他们的电子邮件地址，然后致电：
 
-
-这是一个事实，一旦你将密码引入系统，用户就会忘记它们。在这种情况下，Parse 的库提供了一种让他们安全地重置密码的方法。
+```js
+Parse.User.requestPasswordReset("email@example.com").then( ()=>
+  // Password reset request was sent successfully
+  }).catch(error=>{
+    // Show the error message somewhere
+    alert("Error: " + error.code + " " + error.message);
+  }
+});
+```
 
 
 
