@@ -197,7 +197,6 @@ Parse.User.requestPasswordReset("email@example.com").then( ()=>
   }).catch(error=>{
     // Show the error message somewhere
     alert("Error: " + error.code + " " + error.message);
-  }
 });
 ```
 
