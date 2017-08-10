@@ -43,8 +43,19 @@ user.signUp().then( user=>{
 
 如果注册不成功，您应该读取返回的错误对象。最可能的情况是用户名或电子邮件已被其他用户占用。app应该根据错误返回提示用户修改信息。
 
-  
-
-
 您可以自由使用电子邮件地址作为用户名。只需要您的用户输入他们的电子邮件，但填写用户名属性 - Parse.User将正常工作。我们将介绍如何处理重置密码部分。
+
+### 登录
+
+注册之后，用户需要登录自己的账号，此部分需要用login方法
+
+```js
+Parse.User.logIn('myusername','mypasswd').then( user =>{
+    console.log("sucess to login" + myusername);
+    }).catch((user, error)=>{
+    //登录失败后的逻辑，解析错误部分，然后提示用户
+    });
+```
+
+
 
