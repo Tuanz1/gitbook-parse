@@ -235,7 +235,6 @@ query.find({
 涉及到Parse.User工作权限的关联性。例如，假设您正在制作一个博客应用程序。要存储用户的新帖子并检索他们的所有帖子：
 
 ```js
-
 let user = Parse.User.current();
 
 // 创建新的post
@@ -257,6 +256,24 @@ post.save(null, {
   }
 });
 ```
+
+### 关联账户\(没有实际使用过暂时复制官方文档\)
+
+  
+
+
+解析可让您将用户与Twitter和Facebook等服务联系起来，使您的用户能够使用其现有身份注册或登录到您的应用程序。这通过\_linkWith（）方法通过为您要在authData字段中链接到用户的服务提供认证数据来实现。一旦您的用户与服务相关联，该服务的authData将与用户一起存储，并可通过登录进行检索。
+
+  
+
+
+authData是一个JSON对象，其中包含以下数据的每个链接服务的密钥。在每种情况下，您有责任完成身份验证流程（例如，在客户端使用hellojs的OAuth 1.0a），以获取服务所需的链接信息。
+
+### Facebook 用户
+
+> Parse 提供很多简便的方法让你的应用与Facebook关联，但是由于国内网络等原因，基本在app中不会使用，如果需要，查看官方文档[http://docs.parseplatform.org/js/guide/\#associations](http://docs.parseplatform.org/js/guide/#associations)
+
+### 关联账户
 
 
 
