@@ -64,9 +64,9 @@ Parse.User.logIn('myusername','mypasswd').then( user =>{
 emailVerified属性有三种状态
 
 > 1. true - 用户通过点击通过电子邮件发送给他们的链接来确认他或她的电子邮件地址。解析。当用户帐户首次创建时，用户永远不会有真正的价值。
-> 2. 
+> 2. false - 在Parse.User对象上次刷新时，用户尚未确认他或她的电子邮件地址。如果emailVerified为false，请考虑在Parse.User上调用fetch。
 >
->    false - 在Parse.User对象上次刷新时，用户尚未确认他或她的电子邮件地址。如果emailVerified为false，请考虑在Parse.User上调用fetch。
+> 3. missing-Parse.User是在关闭电子邮件验证或Parse.User没有电子邮件时创建的。
 
 ```js
 
