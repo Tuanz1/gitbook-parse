@@ -109,7 +109,7 @@ Parse.User类默认保护。存储在Parse.User中的数据只能由该用户修
 
 具体来说，除非使用经过身份验证的方法（如logIn或signUp）获取Parse.User，否则您无法调用任何保存或删除方法。这确保只有用户可以更改自己的数据。
 
-安全策略说明:
+安全策略说明:\(根本没看过\)
 
 ```js
 var user = Parse.User.logIn("my_username", "my_password", {
@@ -226,7 +226,36 @@ query.find({
     // Do stuff
   }
 });
+```
 
+### 关联性\(Associations\)
+
+> 谷歌翻译为协会
+
+涉及到Parse.User工作权限的关联性。例如，假设您正在制作一个博客应用程序。要存储用户的新帖子并检索他们的所有帖子：
+
+```js
+
+let user = Parse.User.current();
+
+// 创建新的post
+var Post = Parse.Object.extend("Post");
+var post = new Post();
+post.set("title", "My New Post");
+post.set("body", "This is some great content.");
+post.set("user", user);
+post.save(null, {
+  success: function(post) {
+    // Find all posts by the current user
+    var query = new Parse.Query(Post);
+    query.equalTo("user", user);
+    query.find({
+      success: function(usersPosts) {
+        // userPosts contains all of the posts by the current user.
+      }
+    });
+  }
+});
 ```
 
 
