@@ -4,8 +4,28 @@
 
 会话是Parse对象的子类，因此您可以以与在Parse上操作正常对象相同的方式来查询，更新和删除会话。因为Parse Cloud会在您登录或注册用户时自动创建会话，所以您不应手动创建Session对象，除非您正在构建“对于IoT解析”应用程序（例如Arduino或Embedded C）。删除会话将会将用户从当前正在使用此会话令牌的设备中记录下来。
 
-  
-
-
 与其他Parse对象不同，Session类没有Cloud Code触发器。所以你不能为Session类注册一个beforeSave或afterSave处理程序。
+
+### 会话的属性
+
+Session对象具有以下特殊字段：
+
+> sessionToken（只读）：用于在Parse API请求上进行身份验证的字符串令牌。在会话查询的响应中，只有当前的Session对象将包含会话令牌。
+>
+>   
+>
+>
+> user：（只读）指向此会话用户对象的指针。
+>
+>   
+>
+>
+> createdWith（只读）：有关如何创建此会话的信息（例如{“action”：“login”，“authProvider”：“password”}）。
+>
+>        
+>
+>
+> 操作可以具有值：登录，注册，创建或升级。创建操作是当开发人员通过保存Session对象手动创建会话。升级操作是当用户从旧会话令牌升级到可撤销会话时。
+
+
 
