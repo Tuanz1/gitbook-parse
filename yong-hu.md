@@ -86,9 +86,8 @@ if (currentUser) {
 如何让用户登出:
 
 ```js
-
 Parse.User.logOut().then(() => {
-  var currentUser = Parse.User.current();  // this will now be null
+  var currentUser = Parse.User.current();  // 当前用户为空
 });
 ```
 
