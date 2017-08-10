@@ -198,7 +198,12 @@ Parse.User.requestPasswordReset("email@example.com").then( ()=>
     // Show the error message somewhere
     alert("Error: " + error.code + " " + error.message);
 });
+
+
+
 ```
+
+这将尝试将给定的电子邮件与用户的电子邮件或用户名字段进行匹配，并向他们发送密码重置电子邮件。通过这样做，您可以选择让用户使用他们的电子邮件作为用户名，或者您可以分别收集它们并将其存储在电子邮件字段中。
 
 
 
