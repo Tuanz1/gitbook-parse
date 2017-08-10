@@ -12,18 +12,11 @@ Session对象具有以下特殊字段：
 
 > sessionToken（只读）：用于在Parse API请求上进行身份验证的字符串令牌。在会话查询的响应中，只有当前的Session对象将包含会话令牌。
 >
->
->
 > user：（只读）指向此会话用户对象的指针。
 >
->
->
-> createdWith（只读）：有关如何创建此会话的信息（例如{“action”：“login”，“authProvider”：“password”}）。   
+> createdWith（只读）：有关如何创建此会话的信息（例如{“action”：“login”，“authProvider”：“password”}）。
 >
 > > action 可以具有值：login，signup，create或upgrade。create操作是当开发人员通过保存Session对象手动创建会话。upgrade操作是当用户从旧会话令牌升级到可撤销会话时。
-> >
-> >   
-> >
 > >
 > > authProvider可以有值：password，anonymous，Facebook或Twitter。
 
