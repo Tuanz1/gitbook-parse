@@ -74,3 +74,14 @@ emailVerified属性有三种状态
 
 无论何时使用任何注册或登录方法，用户都将被缓存在localStorage中。你可以将此缓存视为会话，并自动假定用户已登录：
 
+```js
+var currentUser = Parse.User.current();
+if (currentUser) {
+    // do stuff with the user
+} else {
+    // show the signup or login page
+}
+```
+
+
+
