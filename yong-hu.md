@@ -212,7 +212,8 @@ Parse.User.requestPasswordReset("email@example.com").then( ()=>
 >
 > 4. 用户使用新密码登录
 
+  
 
 
-
+请注意，此流程中的消息传递将通过您在Parse上创建此应用程序时指定的名称来引用您的应用程序。
 
