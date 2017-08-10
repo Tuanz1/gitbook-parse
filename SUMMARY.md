@@ -9,4 +9,5 @@
   * [对象的高级查询](dui-xiang/dui-xiang-de-gao-ji-cha-xun.md)
 * [关系](guan-xi.md)
 * [用户](yong-hu.md)
+* [会话](hui-hua.md)
 
