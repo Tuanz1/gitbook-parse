@@ -176,16 +176,15 @@ groupMessage.save();
 您也可以使用setPublicReadAccess和setPublicWriteAccess一次向所有用户授予权限。这允许模式，如在留言板上发表评论。例如，创建一个只能由作者编辑的帖子，但可以由任何人阅读：
 
 ```js
-
 let publicPost = new Post();
 let postACL = new Parse.ACL(Parse.User.current());
 postACL.setPublicReadAccess(true);
 publicPost.setACL(postACL);
 publicPost.save();
-
 ```
 
+  
 
 
-
+被禁止的操作（如删除不具有写入访问权限的对象）会导致Parse.Error.OBJECT\_NOT\_FOUND错误代码。为了安全起见，这样可以防止客户端区分哪些对象id存在但是是安全的，哪些对象id根本不存在。
 
