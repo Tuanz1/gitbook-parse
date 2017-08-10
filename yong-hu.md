@@ -216,10 +216,18 @@ Parse.User.requestPasswordReset("email@example.com").then( ()=>
 
 ### 检索
 
-  
+要查询用户，您可以简单地为Parse.Users创建一个新的Parse.Query:
 
+```js
+let query = new Parse.Query(Parse.User);
+query.equalTo("gender", "female");  // find all the women
+query.find({
+  success: function(women) {
+    // Do stuff
+  }
+});
 
-要查询用户，您可以简单地为Parse.Users创建一个新的Parse.Query
+```
 
 
 
