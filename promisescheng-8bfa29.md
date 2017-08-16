@@ -163,7 +163,10 @@ failed.reject("An error message.");
 var successful = Parse.Promise.as("The good result.");
 
 var failed = Parse.Promise.error("An error message.");
+
 ```
+
+### 系列承诺-Promises in Series 
 
 
 
