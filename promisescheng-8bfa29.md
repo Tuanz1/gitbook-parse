@@ -149,3 +149,14 @@ query.find().then(function(students) {
 
 先前使用的大部分函数其实已经使用了承诺，类似save\(\), find\(\)函数等，但是，对于有些场景需要自己创建一个新的承诺，然后根据实际执行结果调用解析，或者拒绝其触发回调。
 
+```js
+
+let successful = new Parse.Promise();
+successful.resolve("The good result.");
+
+let failed = new Parse.Promise();
+failed.reject("An error message.");
+```
+
+
+
