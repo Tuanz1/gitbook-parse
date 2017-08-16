@@ -35,6 +35,7 @@ var file = new Parse.File("myfile.zzz", fileData, "image/png");
 
 ```js
 let fileCtrl = document.getElementById('imgUpload')["files"];
+//此处不适用.files获取属性，会出现没有该属性的错误
 //由于files可以存储多个文件，但是我们需要的知识第一个文件
 if(fileCtrl.length >0){
     let img = fileCtrl[0];
@@ -50,4 +51,13 @@ if(fileCtrl.length >0){
 2. 您必须为具有文件扩展名的文件指定名称。这使得Parse可以找出文件类型并相应处理它。所以，如果您正在存储PNG图像，请确保您的文件名以.png结尾。
 
 然后就是可以把这个parseFile单做普通的对象属性，或者直接储存到云端数据库中。
+
+### 检索文件内容
+
+  
+
+
+如何最好地检索文件内容取决于您的应用程序的上下文。由于跨域请求问题，最好是让浏览器为您完成工作。通常，这意味着将文件的URL呈现到DOM中。在这里，我们使用jQuery在页面上呈现上传的个人资料照片：
+
+
 
