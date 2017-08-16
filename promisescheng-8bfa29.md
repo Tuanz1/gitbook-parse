@@ -27,13 +27,25 @@ object.save({key: vaue}).then( result =>{
     })
 ```
 
-  
-
-
 没有太大的不同，对吧？那么什么大事呢？那么承诺的真正力量来自于将其中的多个链接在一起。调用promise.then（func）返回一个新的承诺，直到func完成才能实现。但是，使用func的方式有一个非常特别的事情。如果提供的回调函数返回一个新的承诺，那么当回覆的回应满足之前，那么返回的承诺将不会被满足。行为的细节在[Promises / A +](https://github.com/promises-aplus/promises-spec "Promises / A +")提案中进行了说明。这是一个复杂的话题，但也许一个例子会更清楚。
 
-  
-
-
 想象你正在编写代码登录，找到一个对象，然后更新它。在旧的回调范式中，你最终会得到我们所说的金字塔代码：
+
+```js
+Parse.User.logIn("user", "pass", {
+  success: function(user) {
+    query.find({
+      success: function(results) {
+        results[0].save({ key: value }, {
+          success: function(result) {
+            // the object was saved.
+          }
+        });
+      }
+    });
+  }
+});
+```
+
+
 
