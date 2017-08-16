@@ -24,8 +24,25 @@ Parse将根据文件扩展名自动检测您正在上传的文件类型，但可
 var file = new Parse.File("myfile.zzz", fileData, "image/png");
 ```
 
-  
-
-
 但是最常见的是HTML5应用，您将需要使用带有文件上传控件的html表单。在现代浏览器上，这很简单。创建文件输入标签，允许用户从本地驱动器中选择一个文件进行上传：
+
+```js
+//在ionic项目中ion-input不允许传file类型
+<input type="file" id="imgUpload" />
+```
+
+在ionic项目中使用以下代码获取图片文件
+
+```js
+let fileCtrl = document.getElementById('imgUpload')["files"];
+//由于files可以存储多个文件，但是我们需要的知识第一个文件
+if(fileCtrl.length >0){
+    let img = fileCtrl[0];
+    let name = "demo.jpg";
+    
+    let parseFile = new Parse.File(name,img);
+    }
+```
+
+
 
