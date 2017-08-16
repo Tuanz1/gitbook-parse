@@ -54,10 +54,13 @@ if(fileCtrl.length >0){
 
 ### 检索文件内容
 
-  
-
-
 如何最好地检索文件内容取决于您的应用程序的上下文。由于跨域请求问题，最好是让浏览器为您完成工作。通常，这意味着将文件的URL呈现到DOM中。在这里，我们使用jQuery在页面上呈现上传的个人资料照片：
+
+```js
+//检索部分省略,返回结果为result,result中有个属性img的文件
+let img = documet.getElementById('demo');
+img['src'] = result.get('img').url();
+```
 
 
 
