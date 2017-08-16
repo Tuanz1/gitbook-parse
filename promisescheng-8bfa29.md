@@ -143,5 +143,8 @@ query.find().then(function(students) {
 });
 ```
 
+  
 
+
+拥有长链成功回调通常很方便，最后只有一个错误处理程序。
 
