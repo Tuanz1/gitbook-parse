@@ -112,8 +112,36 @@ Parse.User.logIn("user", "pass").then((user) => {
   });
 ```
 
-  
-
-
 一般来说，开发人员认为一个失败的承诺是异步的等同于抛出异常。事实上，如果一个回调传递给然后抛出一个错误，那么返回的promise将会失败并出现该错误。如果链中的任何Promise返回错误，则将跳过所有成功回调，直到遇到错误回调。错误回调可以转换错误，或者它可以通过返回未被拒绝的新Promise来处理该错误。你可以想到被拒绝的承诺有点像抛出异常。错误回调就像一个可以处理错误或重新抛出错误的catch块。
+
+```js
+// 官方代码 es5版本，拥有两个catch错误模块
+var query = new Parse.Query("Student");
+query.descending("gpa");
+query.find().then(function(students) {
+  students[0].set("valedictorian", true);
+  // Force this callback to fail.
+  return Parse.Promise.error("There was an error.");
+
+}).then(function(valedictorian) {
+  // Now this will be skipped.
+  return query.find();
+
+}).then(function(students) {
+  // This will also be skipped.
+  students[1].set("salutatorian", true);
+  return students[1].save();
+}, function(error) {
+  // This error handler WILL be called. error will be "There was an error.".
+  // Let's handle the error by returning a new promise.
+  return Parse.Promise.as("Hello!");
+
+}).then(function(hello) {
+  // Everything is done!
+}, function(error) {
+  // This isn't called because the error was already handled.
+});
+```
+
+
 
