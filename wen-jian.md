@@ -24,5 +24,8 @@ Parse将根据文件扩展名自动检测您正在上传的文件类型，但可
 var file = new Parse.File("myfile.zzz", fileData, "image/png");
 ```
 
+  
 
+
+但是最常见的是HTML5应用，您将需要使用带有文件上传控件的html表单。在现代浏览器上，这很简单。创建文件输入标签，允许用户从本地驱动器中选择一个文件进行上传：
 
