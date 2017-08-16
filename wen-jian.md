@@ -62,5 +62,5 @@ let img = documet.getElementById('demo');
 img['src'] = result.get('img').url();
 ```
 
-
+结果就是id 为demo的图片显示出来
 
