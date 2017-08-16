@@ -193,6 +193,7 @@ query.find().then(function(results) {
 当你想连续做一系列的任务时，承诺很方便，每一个等待以前完成。例如，假设您想删除博客上的所有评论。
 
 ```js
+//暂时没有用过，依旧使用官网代码
 var query = new Parse.Query("Comments");
 query.equalTo("post", post);
 
@@ -218,7 +219,7 @@ query.find().then(function(results) {
 您也可以使用promises来并行执行多个任务，使用when方法。您可以一次启动多个操作，并使用Parse.Promise.when创建一个新的承诺，当所有的输入承诺得到解决时，它将被解决。如果没有一个传递的承诺失败，新的承诺将会成功;否则，最后一个错误将失败。并行执行操作将比串行执行更快，但可能会消耗更多的系统资源和带宽。
 
 ```js
-
+//暂时没有用过，依旧使用官网代码
 var query = new Parse.Query("Comments");
 query.equalTo("post", post);
 
