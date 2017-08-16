@@ -11,11 +11,6 @@ var base64 = "V29ya2luZyBhdCBQYXJzZSBpcyBncmVhdCE=";
 var file = new Parse.File("myfile.txt", { base64: base64 });
 ```
 
-
-
-  
-
-
 或者，您可以从字节值数组创建一个文件：
 
 ```js
@@ -23,5 +18,8 @@ var bytes = [ 0xBE, 0xEF, 0xCA, 0xFE ];
 var file = new Parse.File("myfile.txt", bytes);
 ```
 
+  
 
+
+Parse将根据文件扩展名自动检测您正在上传的文件类型，但可以使用第三个参数指定Content-Type：
 
