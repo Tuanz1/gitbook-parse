@@ -63,10 +63,7 @@ Parse.User.logIn("user", "pass").then((user) => {
 
 ### Then 方法
 
-  
-
-
-每个Promise都有一个命名的方法，它需要一个回调函数。如果承诺得到解决，则调用第一个回调，而如果承诺被拒绝，则调用第二个回调。
+每个Promise都有一个命名的方法，它需要一个回调函数。如果承诺得到解决，则调用第一个回调.then\(\)，而如果承诺被拒绝，则调用第二个回调.catch\(\)。
 
 ### Chaining Promises Together（链式承诺\)
 
@@ -76,6 +73,5 @@ Parse.User.logIn("user", "pass").then((user) => {
 
 ```
 
-  
 
 
