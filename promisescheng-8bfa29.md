@@ -157,8 +157,13 @@ let failed = new Parse.Promise();
 failed.reject("An error message.");
 ```
 
-  
-
-
 如果您知道创建时承诺的结果，则可以使用一些方便的方法。
+
+```js
+var successful = Parse.Promise.as("The good result.");
+
+var failed = Parse.Promise.error("An error message.");
+```
+
+
 
