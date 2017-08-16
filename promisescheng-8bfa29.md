@@ -165,7 +165,7 @@ var successful = Parse.Promise.as("The good result.");
 var failed = Parse.Promise.error("An error message.");
 ```
 
-### 系列承诺-Promises in Series
+### 一连串的承诺-Promises in Series
 
 当你想连续做一系列的任务时，承诺很方便，每一个等待以前完成。例如，假设您想删除博客上的所有评论。
 
@@ -190,8 +190,28 @@ query.find().then(function(results) {
 });
 ```
 
-  
-
-
 当你想连续做一系列的任务时，承诺很方便，每一个等待以前完成。例如，假设您想删除博客上的所有评论。
+
+```js
+var query = new Parse.Query("Comments");
+query.equalTo("post", post);
+
+query.find().then(function(results) {
+  // Create a trivial resolved promise as a base case.
+  var promise = Parse.Promise.as();
+  _.each(results, function(result) {
+    // For each item, extend the promise with a function to delete it.
+    promise = promise.then(function() {
+      // Return a promise that will be resolved when the delete is finished.
+      return result.destroy();
+    });
+  });
+  return promise;
+
+}).then(function() {
+  // Every comment was deleted.
+});
+```
+
+
 
