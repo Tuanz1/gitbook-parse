@@ -238,5 +238,11 @@ query.find().then(function(results) {
 });
 ```
 
+### 创建异步方法-Creating Async Methods
+
+```
+使用这些工具，很容易使自己的异步函数返回承诺。例如，您可以制作一个promisified版本的setTimeout。
+```
+
 
 
