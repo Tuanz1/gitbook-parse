@@ -71,5 +71,36 @@ Parse.User.logIn("user", "pass").then((user) => {
 
 ### 承诺的错误处理-Error Handling With Promises
 
+原先的承诺部分加上错误处理:
 
+```js
+
+Parse.User.logIn("user", "pass", {
+  success: function(user) {
+    query.find({
+      success: function(results) {
+        results[0].save({ key: value }, {
+          success: function(result) {
+            // the object was saved.
+          },
+          error: function(result, error) {
+            // An error occurred.
+          }
+        });
+      },
+      error: function(error) {
+        // An error occurred.
+      }
+    });
+  },
+  error: function(user, error) {
+    // An error occurred.
+  }
+});
+```
+
+  
+
+
+因为承诺知道他们是否已经履行或失败，他们可以传播错误，而不会在遇到错误处理程序之前调用任何回调函数。例如，上面的代码可以简单地写成：
 
