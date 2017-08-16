@@ -65,13 +65,13 @@ Parse.User.logIn("user", "pass").then((user) => {
 
 每个Promise都有一个命名的方法，它需要一个回调函数。如果承诺得到解决，则调用第一个回调.then\(\)，而如果承诺被拒绝，则调用第二个回调.catch\(\)。
 
-### Chaining Promises Together（链式承诺\)
+### \(链式承诺\)Chaining Promises Together
 
 承诺有点神奇，因为他们让你链接他们没有嵌套。如果一个承诺的回调返回一个新的承诺，那么第一个将不会被解决，直到第二个。这样，您可以执行多个操作，而不会产生您将使用回调获得的金字塔代码。
 
-```
+### 承诺的错误处理\(Error Handling With Promises\)
 
-```
+
 
 
 
