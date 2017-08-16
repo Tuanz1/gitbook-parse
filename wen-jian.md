@@ -39,10 +39,13 @@ let fileCtrl = document.getElementById('imgUpload')["files"];
 if(fileCtrl.length >0){
     let img = fileCtrl[0];
     let name = "demo.jpg";
-    
+
     let parseFile = new Parse.File(name,img);
     }
 ```
 
+  
 
+
+请注意，在这个例子中，我们给该文件一个名称为demo.jpg。这里有两件事要注意：
 
