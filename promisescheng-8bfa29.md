@@ -163,10 +163,12 @@ failed.reject("An error message.");
 var successful = Parse.Promise.as("The good result.");
 
 var failed = Parse.Promise.error("An error message.");
-
 ```
 
-### 系列承诺-Promises in Series 
+### 系列承诺-Promises in Series
+
+  
 
 
+当你想连续做一系列的任务时，承诺很方便，每一个等待以前完成。例如，假设您想删除博客上的所有评论。
 
