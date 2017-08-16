@@ -17,5 +17,18 @@ object.save({ key: value }, {
 });
 ```
 
+  
+
+
+在新的Promise范式中，同样的代码将如下所示：
+
+```js
+object.save({key: vaue}).then( result =>{
+    //对象保存成功
+    }).catch(err=>{
+    //对象保存失败
+    })
+```
+
 
 
