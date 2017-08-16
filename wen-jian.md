@@ -18,8 +18,11 @@ var bytes = [ 0xBE, 0xEF, 0xCA, 0xFE ];
 var file = new Parse.File("myfile.txt", bytes);
 ```
 
-  
-
-
 Parse将根据文件扩展名自动检测您正在上传的文件类型，但可以使用第三个参数指定Content-Type：
+
+```js
+var file = new Parse.File("myfile.zzz", fileData, "image/png");
+```
+
+
 
