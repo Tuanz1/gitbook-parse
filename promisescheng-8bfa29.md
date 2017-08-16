@@ -49,3 +49,15 @@ Parse.User.logIn("user", "pass", {
 
 这很可笑，即使没有任何错误处理代码。但是由于承诺链工作的方式，代码现在可以更加平淡：
 
+```js
+Parse.User.logIn("user", "pass").then((user) => {
+  return query.find();
+}).then((results) => {
+  return results[0].save({ key: value });
+}).then((result) => {
+  // 保存查询到的对象
+});
+```
+
+
+
