@@ -74,7 +74,6 @@ Parse.User.logIn("user", "pass").then((user) => {
 原先的承诺部分加上错误处理:
 
 ```js
-
 Parse.User.logIn("user", "pass", {
   success: function(user) {
     query.find({
@@ -99,8 +98,19 @@ Parse.User.logIn("user", "pass", {
 });
 ```
 
-  
-
-
 因为承诺知道他们是否已经履行或失败，他们可以传播错误，而不会在遇到错误处理程序之前调用任何回调函数。例如，上面的代码可以简单地写成：
+
+```js
+Parse.User.logIn("user", "pass").then((user) => {
+  return query.find();
+}).then((results) => {
+  return results[0].save({ key: value });
+}).then((result) => {
+  // 保存查询到的对象
+}).catch(err){
+  //错误处理部分
+  });
+```
+
+
 
