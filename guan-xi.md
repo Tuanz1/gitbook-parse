@@ -91,7 +91,7 @@ user.set("weaponsList", weapons);
 var weapons = Parse.User.current().get("weaponsList")
 ```
 
-> Sometimes, we will want to fetch the “many” objects in our one-to-many relationship at the same time as we fetch the “one” object. One trick we could employ is to use theincludeKey\(orincludein Android\) parameter whenever we use a Parse Query to also fetch the array ofWeaponobjects \(stored in theweaponsListcolumn\) along with the Parse User object:
+> Sometimes, we will want to fetch the “many” objects in our one-to-many relationship at the same time as we fetch the “one” object. One trick we could employ is to use theincludeKey\(or include in Android\) parameter whenever we use a Parse Query to also fetch the array ofWeaponobjects \(stored in theweaponsListcolumn\) along with the Parse User object:
 
 有时，我们将在我们获取“一个”对象的同时，以我们的一对多关系获取“许多”对象。 我们可以采用的一个技巧就是使用includeKey（或者incluede在Android中）参数，无论何时使用Parse Query，还可以读取“数据库”对象（存储在weaponList列中）以及Parse User对象：
 
