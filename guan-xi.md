@@ -231,9 +231,30 @@ follow.save();
 
 如果我们想找到我们正在关注的所有人，我们可以在Follow表上执行查询：
 
+```js
+var query = new Parse.Query("Follow");
+query.equalTo("from", Parse.User.current());
+query.find({
+  success: function(users){
+    ...
+  }
+});
+```
+
 > It’s also pretty easy to find all the users that are following the current user by querying on thetokey:
 
 通过查询关键字查找当前用户的所有用户也很容易找到：
+
+```js
+// create an entry in the Follow table
+var query = new Parse.Query("Follow");
+query.equalTo("to", Parse.User.current());
+query.find({
+  success: function(users){
+    ...
+  }
+});
+```
 
 ##### USING AN ARRAY 使用数组
 
