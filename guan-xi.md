@@ -138,7 +138,7 @@ userQuery.containedIn("weaponsList", arrayOfWeapons);
 
 > The decision point here is whether you want to attach any metadata to the relationship between two entities. If you don’t, Parse Relation or using Arrays are going to be the easiest alternatives. In general, using arrays will lead to higher performance and require fewer queries. If either side of the many-to-many relationship could lead to an array with more than 100 or so objects, then, for the same reason Pointers were better for one-to-many relationships, Parse Relation or Join Tables will be better alternatives.
 
-这里的决定点是您是否要将任何元数据附加到两个实体之间的关系中。 如果没有，解析关系或使用数组将是最简单的选择。 一般来说，使用阵列将导致更高的性能，并且需要较少的查询。 如果多对多关系的任何一方可能导致一个具有超过100个对象的数组，那么，由于同样的原因指针对于一对多关系更好，解析关系或连接表将是更好的替代。
+这里的决定点是您是否要将任何元数据附加到两个实体之间的关系中。 如果没有，Parse关系或使用数组将是最简单的选择。 一般来说，使用阵列将导致更高的性能，并且需要较少的查询。 如果多对多关系的任何一方可能导致一个具有超过100个对象的数组，那么，由于同样的原因指针对于一对多关系更好，Parse关系或联表将是更好的替代。
 
 > On the other hand, if you want to attach metadata to the relationship, then create a separate table \(the “Join Table”\) to house both ends of the relationship. Remember, this is information about the relationship, not about the objects on either side of the relationship. Some examples of metadata you may be interested in, which would necessitate a Join Table approach, include:
 
