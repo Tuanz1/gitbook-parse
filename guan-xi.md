@@ -142,21 +142,54 @@ userQuery.containedIn("weaponsList", arrayOfWeapons);
 
 > On the other hand, if you want to attach metadata to the relationship, then create a separate table \(the “Join Table”\) to house both ends of the relationship. Remember, this is information about the relationship, not about the objects on either side of the relationship. Some examples of metadata you may be interested in, which would necessitate a Join Table approach, include:
 
-另一方面，如果要将元数据附加到关系中，则创建一个单独的表（“连接表”）以容纳关系的两端。 记住，这是关系的信息，而不是关系的任何一方的对象。 您可能感兴趣的元数据的一些示例，这将需要Join Table方法，包括：
+另一方面，如果要将元数据附加到关系中，则创建一个单独的表（“联表”）以容纳关系的两端。 记住，这是关系的信息，而不是关系的任何一方的对象。 您可能感兴趣的元数据的一些示例，这将需要Join Table方法，包括：
 
 ##### USING PARSE RELATIONS 使用PARSE关系
 
 > Using Parse Relations, we can create a relationship between aBookand a fewAuthorobjects. In the Data Browser, you can create a column on theBookobject of type relation and name itauthors.
 
-使用解析关系，我们可以创建一本书和几个作者对象之间的关系。 在数据浏览器中，您可以在类型关系的Book对象上创建一个列，并将其命名为作者。
+使用Parse关系，我们可以创建一本书和几个作者对象之间的关系。 在数据浏览器中，您可以在类型关系的Book对象上创建一个列，并将其命名为作者。
 
 > After that, we can associate a few authors with this book:
 
 之后，我们可以将一些作者与本书联系起来：
 
+```js
+// let’s say we have a few objects representing Author objects
+var authorOne = ...
+var authorTwo = ...
+var authorThree = ...
+
+// now we create a book object
+var book = new Parse.Object("Book");
+
+// now let’s associate the authors with the book
+// remember, we created a "authors" relation on Book
+var relation = book.relation("authors");
+relation.add(authorOne);
+relation.add(authorTwo);
+relation.add(authorThree);
+
+// now save the book object
+book.save();
+```
+
 > To get the list of authors who wrote a book, create a query:
 
 要获取撰写书籍的作者名单，请创建一个查询：
+
+```js
+var book = ...
+
+// create a relation based on the authors key
+var relation = book.relation("authors");
+
+// generate a query based on that relation
+var query = relation.query();
+
+// now execute the query
+
+```
 
 > Perhaps you even want to get a list of all the books to which an author contributed. You can create a slightly different kind of query to get the inverse of the relationship:
 
