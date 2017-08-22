@@ -93,8 +93,6 @@ var weapons = Parse.User.current().get("weaponsList")
 
 > Sometimes, we will want to fetch the “many” objects in our one-to-many relationship at the same time as we fetch the “one” object. One trick we could employ is to use theincludeKey\(or include in Android\) parameter whenever we use a Parse Query to also fetch the array ofWeaponobjects \(stored in theweaponsListcolumn\) along with the Parse User object:
 
-
-
 有时，我们将在我们获取“一个”对象的同时，以我们的一对多关系获取“许多”对象。 我们可以采用的一个技巧就是使用includeKey（或者incluede在Android中）参数，无论何时使用Parse Query，还可以读取“数据库”对象（存储在weaponList列中）以及Parse User对象：
 
 ```js
@@ -136,7 +134,7 @@ userQuery.containedIn("weaponsList", arrayOfWeapons);
 
 > Now let’s tackle many-to-many relationships. Suppose we had a book reading app and we wanted to model Book objects andAuthor objects. As we know, a given author can write many books, and a given book can have multiple authors. This is a many-to-many relationship scenario where you have to choose between Arrays, Parse Relations, or creating your own Join Table.
 
-现在我们来处理多对多关系。 假设我们有一个书本阅读应用程序，我们想为Book对象和Author对象建模。 我们知道，一个给定的作者可以写很多书，一本书可以有多个作者。 这是一个多对多的关系场景，您必须在数组，解析关系或创建自己的连接表之间进行选择。
+现在我们来处理多对多关系。 假设我们有一个书本阅读应用程序，我们想为Book对象和Author对象建模。 我们知道，一个给定的作者可以写很多书，一本书可以有多个作者。 这是一个多对多的关系场景，您必须在数组，解析关系或创建自己的联表之间进行选择。
 
 > The decision point here is whether you want to attach any metadata to the relationship between two entities. If you don’t, Parse Relation or using Arrays are going to be the easiest alternatives. In general, using arrays will lead to higher performance and require fewer queries. If either side of the many-to-many relationship could lead to an array with more than 100 or so objects, then, for the same reason Pointers were better for one-to-many relationships, Parse Relation or Join Tables will be better alternatives.
 
