@@ -56,7 +56,7 @@ var user = game.get("createdBy");
 
 ##### USING ARRAYS 使用数组
 
-> Arrays are ideal when we know that the number of objects involved in our one-to-many relationship are going to be small. Arrays will also provide some productivity benefit via theincludeKeyparameter. Supplying the parameter will enable you to obtain all of the “many” objects in the “one-to-many” relationship at the same time that you obtain the “one” object. However, the response time will be slower if the number of objects involved in the relationship turns out to be large.
+> Arrays are ideal when we know that the number of objects involved in our one-to-many relationship are going to be small. Arrays will also provide some productivity benefit via the includeKey parameter. Supplying the parameter will enable you to obtain all of the “many” objects in the “one-to-many” relationship at the same time that you obtain the “one” object. However, the response time will be slower if the number of objects involved in the relationship turns out to be large.
 
 当我们知道我们的一对多关系中涉及到的对象的数量将会很小时，数组是理想的。 数组还将通过includeKey参数提供一些生产力优势。 提供参数将使您能够在获得“一个”对象的同时获取“一对多”关系中的所有“许多”对象。 然而，如果关系中涉及到的对象数量变大，响应时间将会更慢。
 
