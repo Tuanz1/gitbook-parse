@@ -68,6 +68,21 @@ var user = game.get("createdBy");
 
 我们首先在我们的Parse User对象上创建一个名为weaponsList的列。现在我们把武器对象存放在武器列表中：
 
+```js
+// let's say we have four weapons
+var scimitar = ...
+var plasmaRifle = ...
+var grenade = ...
+var bunnyRabbit = ...
+
+// stick the objects in an array
+var weapons = [scimitar, plasmaRifle, grenade, bunnyRabbit];
+
+// store the weapons for the user
+var user = Parse.User.current();
+user.set("weaponsList", weapons);
+```
+
 > Later, if we want to retrieve theWeaponobjects, it’s just one line of code:
 
 后来，如果我们要检索武器对象，那只是一行代码：
