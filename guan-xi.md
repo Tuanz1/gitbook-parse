@@ -227,7 +227,7 @@ follow.set("date", Date());
 follow.save();
 ```
 
-> If we want to find all of the people we are following, we can execute a query on theFollowtable:
+> If we want to find all of the people we are following, we can execute a query on the Follow table:
 
 如果我们想找到我们正在关注的所有人，我们可以在Follow表上执行查询：
 
