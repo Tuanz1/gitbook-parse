@@ -188,12 +188,23 @@ var relation = book.relation("authors");
 var query = relation.query();
 
 // now execute the query
-
 ```
 
 > Perhaps you even want to get a list of all the books to which an author contributed. You can create a slightly different kind of query to get the inverse of the relationship:
 
-也许你甚至想得到作者贡献的所有书籍的清单。 您可以创建稍微不同的查询类型来获得关系的倒数：
+也许你甚至想得到作者贡献的所有书籍的清单。 您可以创建稍微不同的查询类型来获得相反的关系：
+
+```js
+// suppose we have a author object, for which we want to get all books
+var author = ...
+
+// first we will create a query on the Book object
+var query = new Parse.Query("Book");
+
+// now we will query the authors relation to see if the author object we have
+// is contained therein
+query.equalTo("authors", author);
+```
 
 ##### USING JOIN TABLES 使用联结表
 
