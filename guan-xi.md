@@ -12,7 +12,7 @@
 
 > When you’re thinking about one-to-many relationships and whether to implement Pointers or Arrays, there are several factors to consider. First, how many objects are involved in this relationship? If the “many” side of the relationship could contain a very large number \(greater than 100 or so\) of objects, then you have to use Pointers. If the number of objects is small \(fewer than 100 or so\), then Arrays may be more convenient, especially if you typically need to get all of the related objects \(the “many” in the “one-to-many relationship”\) at the same time as the parent object.
 
-当您考虑一对多的关系以及是否实现指针或数组时，有几个要考虑的因素。 首先，这个关系涉及到多少对象？ 如果关系有“很多”，一方可能包含非常大的数目（大于100个）的对象，则必须使用指针。 如果对象数量较少（少于100个），则数组可能更为方便，特别是如果您通常需要获取所有相关对象（“一对多关系”中的“许多”） 同时作为父对象。
+当您考虑一对多的关系以及是否实现指针或数组时，有几个要考虑的因素。 首先，这个关系涉及到多少个对象？ 如果关系有“很多”，一方可能包含非常大的数目（大于100个）的对象，则必须使用指针。 如果对象数量数量较少（少于100个），则数组可能更为方便，特别是如果您通常需要获取所有相关对象（“一对多关系”中的“许多”） 同时作为父对象。
 
 ##### USING POINTERS 使用指南
 
