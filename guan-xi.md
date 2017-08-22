@@ -56,7 +56,7 @@
 
 > Sometimes, we will want to fetch the “many” objects in our one-to-many relationship at the same time as we fetch the “one” object. One trick we could employ is to use theincludeKey\(orincludein Android\) parameter whenever we use a Parse Query to also fetch the array ofWeaponobjects \(stored in theweaponsListcolumn\) along with the Parse User object:
 
-有时，我们将在我们获取“一个”对象的同时，以我们的一对多关系获取“许多”对象。 我们可以采用的一个技巧就是使用includeKey（或者包含在Android中）参数，无论何时使用Parse Query，还可以读取“数据库”对象（存储在weaponList列中）以及Parse User对象：
+有时，我们将在我们获取“一个”对象的同时，以我们的一对多关系获取“许多”对象。 我们可以采用的一个技巧就是使用includeKey（或者incluede在Android中）参数，无论何时使用Parse Query，还可以读取“数据库”对象（存储在weaponList列中）以及Parse User对象：
 
 > You can also get the “one” side of the one-to-many relationship from the “many” side. For example, if we want to find all Parse User objects who also have a givenWeapon, we can write a constraint for our query like this:
 
@@ -111,8 +111,6 @@
 > If we want to find all of the people we are following, we can execute a query on theFollowtable:
 
 如果我们想找到我们正在关注的所有人，我们可以在Follow表上执行查询：
-
-
 
 > It’s also pretty easy to find all the users that are following the current user by querying on thetokey:
 

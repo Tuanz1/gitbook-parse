@@ -178,7 +178,7 @@ query.containsAll("arrayKey", [2, 3, 4]);
 ```
 
 如果您正在尝试实现一般的搜索功能，我们建议您查看此博文：[http://blog.parse.com/learn/engineering/implementing-scalable-search-on-a-nosql-backend/](http://blog.parse.com/learn/engineering/implementing-scalable-search-on-a-nosql-backend/)  
-使用startsWith限制以特定字符串开头的字符串值。 与MySQL LIKE运算符类似，它被索引，因此对于大型数据集是有效的： 
+使用startsWith限制以特定字符串开头的字符串值。 与MySQL LIKE运算符类似，它被索引，因此对于大型数据集是有效的：
 
 ```js
 // Finds barbecue sauces that start with "Big Daddy's".
