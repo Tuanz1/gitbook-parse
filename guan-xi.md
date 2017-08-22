@@ -14,7 +14,7 @@
 
 当您考虑一对多的关系以及是否实现指针或数组时，有几个要考虑的因素。 首先，这个关系涉及到多少个对象？ 如果关系有“很多”，一方可能包含非常大的数目（大于100个）的对象，则必须使用指针。 如果对象数量数量较少（少于100个），则数组可能更为方便，特别是如果您通常需要获取所有相关对象（“一对多关系”中的“许多”） 同时作为父对象。
 
-##### USING POINTERS 使用指南
+##### USING POINTERS 使用指针
 
 > Let’s say we have a game app. The game keeps track of the player’s score and achievements every time she chooses to play. In Parse, we can store this data in a singleGameobject. If the game becomes incredibly successful, each player will store thousands ofGameobjects in the system. For circumstances like this, where the number of relationships can be arbitrarily large, Pointers are the best option.
 
@@ -26,7 +26,7 @@
 
 ```js
 var game = new Parse.Object("Game");
-game.set("createdBy", Parse.User.current()); 
+game.set("createdBy", Parse.User.current());
 ```
 
 > We can obtain all of theGameobjects created by a Parse User with a query:
