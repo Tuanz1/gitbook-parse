@@ -2,7 +2,7 @@
 
 > There are three kinds of relationships. One-to-one relationships enable one object to be associated with another object. One-to-many relationships enable one object to have many related objects. Finally, many-to-many relationships enable complex relationships among many objects.
 
-有三种关系。 一对一关系使一个对象能够与另一个对象相关联。 一对多关系使一个对象与许多对象相关联。 最后，多对多关系使许多对象之间的复杂关系成为可能。
+数据之间有三种关系:  一对一关系使一个对象能够与另一个对象相关联。 一对多关系使一个对象与许多对象相关联。 最后，多对多关系使许多对象之间的复杂关系成为可能。
 
 > There are four ways to build relationships in Parse:
 
