@@ -24,13 +24,31 @@
 
 假设在这个游戏应用程序中，我们要确保每个Game对象与Parse User相关联。 我们可以这样实现：
 
+```js
+var game = new Parse.Object("Game");
+game.set("createdBy", Parse.User.current()); 
+```
+
 > We can obtain all of theGameobjects created by a Parse User with a query:
 
 我们可以获取由Parse User创建的所有Game对象的查询：
 
+```js
+var query = new Parse.Query("Game");
+query.equalTo("createdBy", Parse.User.current());
+```
+
 > And, if we want to find the Parse User who created a specificGame, that is a lookup on thecreatedBykey:
 
 而且，如果我们想要找到创建特定游戏的Parse User，那就是在createdBy键上查找：
+
+```js
+// say we have a Game object
+var game = ...
+
+// getting the user who created the Game
+var user = game.get("createdBy");
+```
 
 > For most scenarios, Pointers will be your best bet for implementing one-to-many relationships.
 
