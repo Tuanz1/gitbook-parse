@@ -206,15 +206,26 @@ var query = new Parse.Query("Book");
 query.equalTo("authors", author);
 ```
 
-##### USING JOIN TABLES 使用联结表
+##### USING JOIN TABLES 使用联表
 
-> There may be certain cases where we want to know more about a relationship. For example, suppose we were modeling a following/follower relationship between users: a given user can follow another user, much as they would in popular social networks. In our app, we not only want to know if User A is following User B, but we also want to know when User A started following User B. This information could not be contained in a Parse Relation. In order to keep track of this data, you must create a separate table in which the relationship is tracked. This table, which we will callFollow, would have afromcolumn and atocolumn, each with a pointer to a Parse User. Alongside the relationship, you can also add a column with aDateobject nameddate.
+> There may be certain cases where we want to know more about a relationship. For example, suppose we were modeling a following/follower relationship between users: a given user can follow another user, much as they would in popular social networks. In our app, we not only want to know if User A is following User B, but we also want to know when User A started following User B. This information could not be contained in a Parse Relation. In order to keep track of this data, you must create a separate table in which the relationship is tracked. This table, which we will call Follow, would have a from column and atocolumn, each with a pointer to a Parse User. Alongside the relationship, you can also add a column with aDateobject named date.
 
 在某些情况下，我们想要更多地了解关系。 例如，假设我们正在建模用户之间的关注关系：给定的用户可以关注另一个用户，就像在流行的社交网络中一样。 在我们的应用程序中，我们不仅想知道用户A是否关注用户B，而且我们也想知道用户A何时开始关注用户B.此信息不能包含在解析关系中。 为了跟踪这些数据，您必须创建一个单独的表，其中跟踪关系。 这个表，我们将调用Follow，将有一个从一列到一列，每个都有一个指向分析用户的指针。 除了关系之外，您还可以添加一个名为date的Date对象的列。
 
 > Now, when you want to save the following relationship between two users, create a row in theFollowtable, filling in thefrom,to, anddatekeys appropriately:
 
 现在，如果要保存两个用户之间的以下关系，请在“跟踪”表中创建一行，从而适当填写from，to和date键：
+
+```js
+var otherUser = ...
+
+// create an entry in the Follow table
+var follow = new Parse.Object("Follow");
+follow.set("from", Parse.User.current());
+follow.set("to", otherUser);
+follow.set("date", Date());
+follow.save();
+```
 
 > If we want to find all of the people we are following, we can execute a query on theFollowtable:
 
