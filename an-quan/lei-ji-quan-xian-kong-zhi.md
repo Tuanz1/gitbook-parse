@@ -80,3 +80,17 @@ acl.setRoleWriteAccess("admins", true);
 
 指针权限就像虚拟ACL。它们不会出现在ACL列中，如果您熟悉ACL的工作原理，您可以将其视为ACL。在上面的示例中，使用发件人和接收者，每个对象的行为就好像它具有以下ACL：
 
+```
+{
+    "<SENDER_USER_ID>": {
+        "read": true,
+        "write": true
+    },
+    "<RECEIVER_USER_ID>": {
+        "read": true
+    }
+}
+```
+
+
+
