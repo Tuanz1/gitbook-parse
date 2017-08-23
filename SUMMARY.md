@@ -13,6 +13,6 @@
 * [文件](wen-jian.md)
 * [承诺](promisescheng-8bfa29.md)
 * [关系](guan-xi.md)
-* [安全](guan-xi.md)
+* [安全](an-quan.md)
   * [类级权限控制](/an-quan/lei-ji-quan-xian-kong-zhi.md)
 
