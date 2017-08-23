@@ -21,8 +21,18 @@ user.setACL(new Parse.ACL(user));
 // not available in the JavaScript SDK
 ```
 
+如果您希望用户拥有一些公开的数据，另外一些是私有的，那么最好有两个独立的对象。您可以从公共数据添加一个指向私有数据的指针。
+
+```js
+var privateData = Parse.Object.extend("PrivateUserData");
+privateData.setACL(new Parse.ACL(Parse.User.current()));
+privateData.set("phoneNumber", "555-5309");
+
+Parse.User.current().set("privateData", privateData);
+```
+
   
 
 
-如果您希望用户拥有一些公开的数据，另外一些是私有的，那么最好有两个独立的对象。您可以从公共数据添加一个指向私有数据的指针。
+当然，您可以对对象设置不同的读写权限。例如，这是您如何为用户创建公共帖子的ACL，任何人都可以读取它：
 
