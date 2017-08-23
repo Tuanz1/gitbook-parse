@@ -1,4 +1,4 @@
-Promises
+# Promises
 
 除了回调之外，Parse JavaScript SDK中的每个异步方法返回一个Promise。有了承诺，您的代码可以比使用回调的嵌套代码更干净。
 

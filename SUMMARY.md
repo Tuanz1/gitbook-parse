@@ -11,7 +11,6 @@
 * [用户](yong-hu.md)
 * [会话](hui-hua.md)
 * [文件](wen-jian.md)
-* [Promises\(承诺\)](promisescheng-8bfa29.md)
+* [承诺](promisescheng-8bfa29.md)
 * [关系](guan-xi.md)
-* 实时查询
 

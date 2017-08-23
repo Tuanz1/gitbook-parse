@@ -6,5 +6,17 @@
 >
 > 联系邮箱：614620265@qq.com
 
+## 需要更新的部分
+
+1. Live Queries由于没有实际使用过，暂时没有继续翻译
+2. Roles部分
+3. GeoPointes
+4. Push NOtifications
+5. Config
+6. Analytics
+7. Data
+8. 
+
+
 
 
