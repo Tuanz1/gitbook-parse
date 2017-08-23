@@ -278,9 +278,34 @@ query.find({
 
 在这一点上，获取给定书中的所有作者对象是一个非常简单的调用：
 
+```js
+var authorList = book.get("authors")
+```
+
+
+
 > Finally, suppose you have anAuthorand you want to find all theBookobjects in which she appears. This is also a pretty straightforward query with an associated constraint:
 
 最后，假设你有一个作者，你想找到她出现的所有的Book对象。 这也是一个非常简单的查询与相关的约束：
+
+```js
+// set up our query for the Book object
+var bookQuery = new Parse.Query("Book");
+
+// configure any constraints on your query...
+bookQuery.equalTo("authors", author);
+
+// tell the query to fetch all of the Author objects along with the Book
+bookQuery.include("authors");
+
+// execute the query
+bookQuery.find({
+  success: function(books){
+    ...
+  }
+});
+
+```
 
 ## One-to-One 一对一
 
