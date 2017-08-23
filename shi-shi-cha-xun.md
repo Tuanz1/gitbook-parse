@@ -29,9 +29,15 @@ subscription.on('open', () => {
 
 当调用query.subscribe（）时，我们向LiveQuery服务器发送订阅请求。当我们从LiveQuery服务器获得确认后，将发出此事件。
 
- 当客户端失去与LiveQuery服务器的WebSocket连接时，我们将尝试自动重新连接LiveQuery服务器。如果我们重新连接LiveQuery服务器并成功重新订阅ParseQuery，那么您也将获得此事件。
+当客户端失去与LiveQuery服务器的WebSocket连接时，我们将尝试自动重新连接LiveQuery服务器。如果我们重新连接LiveQuery服务器并成功重新订阅ParseQuery，那么您也将获得此事件。
 
 > CREATE EVENT-创建事件
+
+```js
+subscription.on('create', (object) => {
+  console.log('object created');
+});
+```
 
 
 
