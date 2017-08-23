@@ -49,8 +49,49 @@ subscription.on('update', (object) => {
 });
 ```
 
+当现有的ParseObject完成您订阅的ParseQuery时，它将被更新（ParseObject在更改之前和之后完成ParseQuery），您将获得此事件。对象是更新的ParseObject。其内容是ParseObject的最新值。
+
+> ENTER EVENT
+
+```js
+subscription.on('enter', (object) => {
+  console.log('object entered');
+});
+```
+
   
 
 
-当现有的ParseObject完成您订阅的ParseQuery时，它将被更新（ParseObject在更改之前和之后完成ParseQuery），您将获得此事件。对象是更新的ParseObject。其内容是ParseObject的最新值。
+当现有ParseObject的旧值不符合ParseQuery但其新值满足ParseQuery时，您将获得此事件。该对象是输入ParseQuery的ParseObject。其内容是ParseObject的最新值。
+
+> LEAVE EVENT-离开事件
+
+```js
+subscription.on('leave', (object) => {
+  console.log('object left');
+});
+```
+
+  
+
+
+当现有ParseObject的旧值满足ParseQuery，但其新值不符合ParseQuery时，您将获得此事件。该对象是离开ParseQuery的ParseObject。其内容是ParseObject的最新值。
+
+> DELETE EVENT-删除事件
+
+```js
+subscription.on('delete', (object) => {
+  console.log('object deleted');
+});
+```
+
+> CLOSE EVENT-关闭事件
+
+```js
+subscription.on('close', () => {
+  console.log('subscription closed');
+});
+```
+
+
 
