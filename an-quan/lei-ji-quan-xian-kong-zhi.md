@@ -31,8 +31,16 @@ privateData.set("phoneNumber", "555-5309");
 Parse.User.current().set("privateData", privateData);
 ```
 
+当然，您可以对对象设置不同的读写权限。例如，这是您如何为用户创建公共帖子的ACL，任何人都可以读取它：
+
+```js
+var acl = new Parse.ACL();
+acl.setPublicReadAccess(true);
+acl.setWriteAccess(Parse.User.current().id, true);
+```
+
   
 
 
-当然，您可以对对象设置不同的读写权限。例如，这是您如何为用户创建公共帖子的ACL，任何人都可以读取它：
+有时在每个用户的基础上管理权限是不方便的，而且您希望有一组用户受到相同的处理（例如一组具有特殊权限的管理员）。角色是一种特殊的对象，可以让您创建一组可以分配给ACL的用户。角色最好的是，您可以添加和删除角色中的用户，而无需更新限制为该角色的每个对象。要创建只能由管理员写入的对象：
 
