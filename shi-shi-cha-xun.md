@@ -39,5 +39,8 @@ subscription.on('create', (object) => {
 });
 ```
 
+  
 
+
+当一个新的ParseObject被创建并且它符合你订阅的ParseQuery时，你会得到这个事件。该对象是创建的ParseObject。
 
