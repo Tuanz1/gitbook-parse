@@ -39,8 +39,18 @@ subscription.on('create', (object) => {
 });
 ```
 
+当一个新的ParseObject被创建并且它符合你订阅的ParseQuery时，你会得到这个事件。该对象是创建的ParseObject。
+
+> UPDATE EVENT-更新事件
+
+```js
+subscription.on('update', (object) => {
+  console.log('object updated');
+});
+```
+
   
 
 
-当一个新的ParseObject被创建并且它符合你订阅的ParseQuery时，你会得到这个事件。该对象是创建的ParseObject。
+当现有的ParseObject完成您订阅的ParseQuery时，它将被更新（ParseObject在更改之前和之后完成ParseQuery），您将获得此事件。对象是更新的ParseObject。其内容是ParseObject的最新值。
 
