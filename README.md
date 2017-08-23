@@ -9,15 +9,15 @@
 ## 需要更新的部分
 
 1. Live Queries由于没有实际使用过，暂时没有继续翻译
-2. Roles部分
+2. Roles  优先
 3. GeoPointes
 4. Push NOtifications
 5. Config
 6. Analytics
 7. Data
-8. Error Handing
+8. Error Handing　
 
-9. 安全
+9. 安全　优先
 
 10. performance
 
