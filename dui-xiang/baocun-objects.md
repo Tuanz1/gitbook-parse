@@ -275,6 +275,10 @@ let bool = false;
 let string = "the number is " + number;
 // Date()函数支持sring参数初始化
 let date = new Date();
+let date = new Date('1995-12-17T03:24:00');
+let date = new Date(1995, 11, 17);
+let date = new Date(1995, 11, 17, 3, 24, 0);
+
 let array = [string, number];
 let object = { number: number, string: string };
 let pointer = MyClassName.createWithoutData(objectId);
