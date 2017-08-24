@@ -273,6 +273,7 @@ query.find().then(list=>{
 let number = 42;
 let bool = false;
 let string = "the number is " + number;
+// Date()函数支持sring参数初始化
 let date = new Date();
 let array = [string, number];
 let object = { number: number, string: string };
