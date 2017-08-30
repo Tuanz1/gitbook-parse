@@ -10,6 +10,7 @@
 * [实时查询](shi-shi-cha-xun.md)
 * [用户](yong-hu.md)
 * [会话](hui-hua.md)
+* [角色](jiao-se.md)
 * [文件](wen-jian.md)
 * [承诺](promisescheng-8bfa29.md)
 * [关系](guan-xi.md)
@@ -17,6 +18,5 @@
   * [对象访问控制](/an-quan/lei-ji-quan-xian-kong-zhi.md)
   * [云代码](an-quan/shu-ju-zai-yun-dai-ma-zhong-de-wan-zheng-xing.md)
   * [安全概要](an-quan/an-quan-gai-yao.md)
-* [错误码](cuo-wu-ma.md)
-* [角色](jiao-se.md)
+* [错误代码](cuo-wu-ma.md)
 
