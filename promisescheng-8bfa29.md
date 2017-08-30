@@ -240,8 +240,20 @@ query.find().then(function(results) {
 
 ### 创建异步方法-Creating Async Methods
 
-```
 使用这些工具，很容易使自己的异步函数返回承诺。例如，您可以制作一个promisified版本的setTimeout。
+
+```js
+var delay = function(millis) {
+  var promise = new Parse.Promise();
+  setTimeout(function() {
+    promise.resolve();
+  }, millis);
+  return promise;
+};
+
+delay(100).then(function() {
+  // This ran after 100ms!
+});
 ```
 
 ## 
