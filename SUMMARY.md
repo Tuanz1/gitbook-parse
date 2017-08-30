@@ -18,5 +18,5 @@
   * [对象访问控制](/an-quan/lei-ji-quan-xian-kong-zhi.md)
   * [云代码](an-quan/shu-ju-zai-yun-dai-ma-zhong-de-wan-zheng-xing.md)
   * [安全概要](an-quan/an-quan-gai-yao.md)
-* [错误代码](cuo-wu-ma.md)
+* [错误](cuo-wu-ma.md)
 
