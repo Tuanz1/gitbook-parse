@@ -28,11 +28,11 @@
 一旦您确信您的应用程序中的类之间具有正确的类和关系，您应该开始通过执行以下操作来将其锁定：  
 几乎你创建的每个类都应该在某种程度上调整这些权限。对于每个对象具有相同权限的类，级别设置将最有效。例如，一个常见的用例需要一个静态数据类，任何人都可以读取，而不是由任何人写。
 
-> RESTRICTING CLASS CREATION
+> 限制创建新的类－RESTRICTING CLASS CREATION
 
 首先，您可以配置应用程序，以便客户端无法在Parse上创建新类。这通过在ParseServer配置中将键allowClientClassCreation设置为false来实现。有关配置ParseServer的概述，请参阅[官方配置文档](https://github.com/parse-community/parse-server#configuration "官方配置文档")。一旦受到限制，类只能从数据浏览器或masterKey创建。这将防止攻击者使用无限制的任意新类填充数据库。
 
-> CONFIGURING CLASS-LEVEL PERMISSIONS
+> 设置类级权限－CONFIGURING CLASS-LEVEL PERMISSIONS
 
 Parse让您指定每个类允许的操作。这允许您限制客户端访问或修改类的方式。要更改这些设置，请转到数据浏览器，选择一个类，然后单击“安全”按钮。  
 您可以配置客户端对所选类执行以下每个操作的能力：
