@@ -118,5 +118,98 @@ acl.setRoleWriteAccess("admins", true);
 }
 ```
 
+###  REQUIRES AUTHENTICATION PERMISSION \(REQUIRES PARSE-SERVER &gt;= 2.3.0\) {#requires-authentication-permission-requires-parse-server---230}
+
+从2.3.0版本开始，parse-server引入了一个新的Class Level Permission requiresAuthentication。 此CLP可防止任何未经身份验证的用户执行CLP保护的操作。
+
+
+
+例如，您希望允许经过身份验证的用户从您的应用程序中查找和发布公告，并且您的管理员角色具有所有权限，您将设置CLP：
+
+```js
+// 这个权限设置有点类似于mongodb的用户管理
+// POST http://my-parse-server.com/schemas/Announcement
+// Set the X-Parse-Application-Id and X-Parse-Master-Key header
+// body:
+{
+  classLevelPermissions:
+  {
+    "find": {
+      "requireAuthentication": true,
+      "role:admin": true
+    },
+    "get": {
+      "requireAuthentication": true,
+      "role:admin": true
+    },
+    "create": { "role:admin": true },
+    "update": { "role:admin": true },
+    "delete": { "role:admin": true },
+  }
+}
+```
+
+作用:
+
+* 非认证的用户将无法做任何事情。
+* 经过身份验证的用户（具有有效sessionToken的任何用户）将能够读取该类中的所有对象。
+* 属于admin角色的用户将能够执行所有操作。
+
+> ：警告：请注意，这绝对不会保护您的内容，如果允许任何人登录到您的服务器，每个客户端仍然可以查询此对象。
+
+### CLP AND ACL INTERACTION {#clp-and-acl-interaction}
+
+类级别权限（CLP）和访问控制列表（ACL）是保护应用程序的强大工具，但并不总是完全与您期望的方式进行交互。 它们实际上代表了每个请求必须通过的两个独立的安全层，以返回正确的信息或进行预期的更改。 这些层，一个在类级别，一个在对象级别，如下所示。 请求必须通过两层检查才能授权。 请注意，尽管行为类似于ACL，指针权限是一种类级别权限，因此请求必须通过指针权限检查才能通过CLP检查。
+
+![](/assets/Api Request.png)  
+如您所见，当您使用CLP和ACL两者时，用户是否有权提出请求可能会变得复杂。我们来看一个例子来更好地了解CLP和ACL如何交互。说我们有一个Photo类，一个对象，photoObject。我们的应用程序中有2个用户，user1和user2。现在让我们说，我们在Photo类上设置一个Get CLP，禁用public Get，但允许user1执行Get。现在我们还在photoObject上设置一个ACL，以允许只读user2的读取（包括GET）。
+
+
+
+您可能会期望这将允许user1和user2都可以获取PhotoObject，但是由于CLP层的身份验证和ACL层始终都有效，所以它实际上使得user1和user2都不能获取photoObject。如果user1尝试获取PhotoObject，它将通过CLP层验证，但是将被拒绝，因为它不通过ACL层。以同样的方式，如果user2尝试获取PhotoObject，它也将在CLP认证层拒绝。
+
+
+
+现在看看使用指针权限的示例。说我们有一个Post类，一个对象是myPost。我们的应用程序，海报和查看器中有2个用户。假设我们添加了一个指针权限，它允许Post类的“创建者”字段中的任何人对该对象进行读写访问，对于myPost对象，海报是该字段中的用户。对象上还有一个访问控制列表，可以向读者提供读取访问权限。您可能会希望这样可以让海报读取和编辑myPost，并且查看器读取它，但是查看器将被指针权限拒绝，海报将被ACL拒绝，因此再次，用户将无法访问目的。
+
+
+
+由于CLP，指针权限和ACL之间的复杂交互，我们建议在一起使用时小心。通常只能使用CLP来禁用特定请求类型的所有权限，然后对其他请求类型使用指针权限或ACL。例如，您可能要禁用照片类的删除，但是在照片上放置指针权限，因此创建它的用户可以对其进行编辑，但不要删除它。由于指针权限和ACL相互作用特别复杂，我们通常建议仅使用这两种安全机制之一。
+
+###  SECURITY EDGE CASES {#security-edge-cases}
+
+Parse中有一些特殊的类不遵循所有其他类的所有相同的安全规则。 并不是所有的[Class-Level Permissions \(CLPs\)](http://docs.parseplatform.org/js/guide/#class-level-permissions)或[Access Control Lists \(ACLs\)](http://docs.parseplatform.org/js/guide/#object-level-access-control)，它们如何被定义，并且这些异常被记录在案。 这里“正常行为”是指CLP和ACL正常工作，而任何其他特殊行为都在脚注中描述。  
+
+
+|  |
+| :--- |
+
+
+| Method | `_User` | `_Installation` |
+| :--- | :--- | :--- |
+| Get | normal behaviour \[1, 2, 3\] | ignores CLP, but not ACL |
+| Find | normal behavior \[3\] | master key only \[6\] |
+| Create | normal behavior \[4\] | ignores CLP |
+| Update | normal behavior \[5\] | ignores CLP, but not ACL \[7\] |
+| Delete | normal behavior \[5\] | master key only \[7\] |
+| Add Field | normal behavior | normal behavior |
+
+1. 登录, 或`/1/login REST API 不遵守用户类上获取CLP`, 登录仅基于用户名和密码，不能使用CLP进行禁用。
+
+2. 根据REST API中的/ 1 / users / me，检索当前用户或成为基于会话令牌的用户不遵守用户类上的Get CLP。
+
+3. 读取ACL不适用于登录用户。例如，如果所有用户具有禁用读取的ACL，则对用户执行查询查询仍将返回已登录的用户。但是，如果查找CLP被禁用，则尝试对用户执行查找仍将返回错误。
+
+4. 创建CLP也适用于注册。因此，在用户类中禁用创建CLP也会禁止用户在没有主密钥的情况下注册。
+
+5. 用户只能自己更新和删除。更新和删除的公共CLP可能仍然适用。例如，如果禁用用户类的公共更新，则用户无法自己编辑。但是无论用户写入ACL是什么，该用户仍然可以自行更新或删除，并且没有其他用户可以更新或删除该用户。然而，一如以往，使用主密钥允许用户更新其他用户，不受CLP或ACL的影响。
+
+6. 获取安装请求按照正常的ACL进行。除非提供installId作为约束，否则不允许查找不带主密钥的请求。
+
+7. 对安装的更新请求确实遵循安装上定义的ACL，但删除请求仅限于主密钥。有关安装如何工作的更多信息，请查看REST指南的安装部分。
+
+##  {#data-integrity-in-cloud-code}
+
+  
 
 
