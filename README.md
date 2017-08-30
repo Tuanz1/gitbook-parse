@@ -15,13 +15,9 @@
 5. Config
 6. Analytics
 7. Data
-8. Error Handing　优先
+8. performance
 
-9. 安全　优先
 
-10. performance
-
-11. Error Codes
 
 
 
