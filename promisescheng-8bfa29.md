@@ -27,7 +27,7 @@ object.save({key: vaue}).then( result =>{
     })
 ```
 
-没有太大的不同，对吧？那么什么大事呢？那么承诺的真正力量来自于将其中的多个链接在一起。调用promise.then（func）返回一个新的承诺，直到func完成才能实现。但是，使用func的方式有一个非常特别的事情。如果提供的回调函数返回一个新的承诺，那么当回覆的回应满足之前，那么返回的承诺将不会被满足。行为的细节在[Promises / A +](https://github.com/promises-aplus/promises-spec "Promises / A +")提案中进行了说明。这是一个复杂的话题，但也许一个例子会更清楚。
+没有太大的不同，对吧？那么什么承诺有什么用处呢？那么承诺的真正力量来自于将其中的多个链接在一起。调用promise.then（func）返回一个新的承诺，直到func完成才能实现。但是，使用func的方式有一个非常特别的事情。如果提供的回调函数返回一个新的承诺，那么当回覆的回应满足之前，那么返回的承诺将不会被满足。行为的细节在[Promises / A +](https://github.com/promises-aplus/promises-spec "Promises / A +")提案中进行了说明。这是一个复杂的话题，但也许一个例子会更清楚。
 
 想象你正在编写登录代码，找到一个对象，然后更新它。在旧的回调范式中，你最终会得到我们所说的金字塔代码：
 
@@ -68,6 +68,26 @@ Parse.User.logIn("user", "pass").then((user) => {
 ### 链式承诺-Chaining Promises Together
 
 承诺有点神奇，因为他们让你链接他们没有嵌套。如果一个承诺的回调返回一个新的承诺，那么第一个将不会被解决，直到第二个。这样，您可以执行多个操作，而不会产生您将使用回调获得的金字塔代码。
+
+```js
+var query = new Parse.Query("Student");
+query.descending("gpa");
+query.find().then(function(students) {
+  students[0].set("valedictorian", true);
+  return students[0].save();
+
+}).then(function(valedictorian) {
+  return query.find();
+
+}).then(function(students) {
+  students[1].set("salutatorian", true);
+  return students[1].save();
+
+}).then(function(salutatorian) {
+  // Everything is done!
+
+});
+```
 
 ### 承诺的错误处理-Error Handling With Promises
 
@@ -115,7 +135,6 @@ Parse.User.logIn("user", "pass").then((user) => {
 一般来说，开发人员认为一个失败的承诺是异步的等同于抛出异常。事实上，如果一个回调传递给然后抛出一个错误，那么返回的promise将会失败并出现该错误。如果链中的任何Promise返回错误，则将跳过所有成功回调，直到遇到错误回调。错误回调可以转换错误，或者它可以通过返回未被拒绝的新Promise来处理该错误。你可以想到被拒绝的承诺有点像抛出异常。错误回调就像一个可以处理错误或重新抛出错误的catch块。
 
 ```js
-// 官方代码 es5版本，拥有两个catch错误模块
 var query = new Parse.Query("Student");
 query.descending("gpa");
 query.find().then(function(students) {
