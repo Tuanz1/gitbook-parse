@@ -133,7 +133,6 @@ Parse.LiveQuery.on('open', () => {
 Parse.LiveQuery.on('close', () => {
   console.log('socket connection closed');
 });
-
 ```
 
 当我们失去与LiveQuery服务器的WebSocket连接时，您将收到此事件。
@@ -182,15 +181,13 @@ let client = new LiveQueryClient({
 client.open();
 ```
 
-
-
 调用它之后，LiveQueryClient将尝试向LiveQuery服务器发送连接请求。
 
 > SUBSCRIBE
 
 ```js
 let query = new Parse.Query('Game');
-let subscription = client.subscribe(query, sessionToken); 
+let subscription = client.subscribe(query, sessionToken);
 ```
 
 * query是强制性的，它是您要订阅的ParseQuery
@@ -215,8 +212,41 @@ client.close();
 
 ## 事件处理\(Client\)-Event Handling
 
+我们公开三个事件来帮助您监视LiveQueryClient的状态。用法基本上与前面的LIveQuery一致
+
+> OPEN EVENT
+
+```js
+client.on('open', () => {
+  console.log('connection opened');
+});
+```
+
+> CLOSE EVENT
+
+```js
+client.on('close', () => {
+  console.log('connection closed');
+});
+```
+
+> ERROR EVENT
+
+```js
+client.on('error', (error) => {
+  console.log('connection error');
+});
+```
+
+## 重新连接
 
 
-我们公开三个事件来帮助您监视LiveQueryClient的状态。  
-&gt; OPEN EVENT
+
+由于整个LiveQuery功能都依赖于与LiveQuery服务器的WebSocket连接，因此我们始终尝试维护一个开放的WebSocket连接。 因此，当我们发现我们失去与LiveQuery服务器的连接时，我们将尝试自动重新连接。 我们在引导下进行指数回撤。 但是，如果WebSocket连接由于Parse.LiveQuery.close（）或client.close（）关闭，我们将取消自动重新连接。
+
+## SessionToken
+
+
+
+在订阅ParseQuery时，我们会将sessionToken发送给LiveQuery服务器。 对于标准API，我们默认使用当前用户的sessionToken。 对于高级API，您可以在订阅ParseQuery时使用任何sessionToken。 要注意的一个重要事情是当您注销或正在使用的sessionToken无效时，您应该取消订阅并再次订阅ParseQuery。 否则，您可能会遇到安全问题，因为您将收到不应发送给您的事件。
 
