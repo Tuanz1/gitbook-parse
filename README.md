@@ -8,14 +8,13 @@
 
 ## 需要更新的部分
 
-1. Live Queries由于没有实际使用过，暂时没有继续翻译
-2. Roles  优先
-3. GeoPointes
-4. Push NOtifications
-5. Config
-6. Analytics
-7. Data
-8. performance
+1. Roles  优先
+2. GeoPointes
+3. Push NOtifications
+4. Config
+5. Analytics
+6. Data
+7. performance
 
 
 
