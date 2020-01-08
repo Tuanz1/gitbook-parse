@@ -1,6 +1,5 @@
 # Summary
 
-* [Introduction](README.md)
 * [Parse文档](parse.md)
 * [Parse Server配置](parse/pei-zhi-parseserver.md)
 * [对象（Object）](dui-xiang.md)
@@ -17,5 +16,6 @@
   * [云代码](an-quan/shu-ju-zai-yun-dai-ma-zhong-de-wan-zheng-xing.md)
   * [安全概要](an-quan/an-quan-gai-yao.md)
 * [错误](cuo-wu.md)
-* [README](README.md)
+* [说明](README.md)
+* [R](README.md)
 
