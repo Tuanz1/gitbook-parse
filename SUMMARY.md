@@ -1,9 +1,10 @@
 # Summary
 
+* [Introduction](README.md)
 * [Parse文档](parse.md)
 * [Parse Server配置](parse/pei-zhi-parseserver.md)
-* [对象\(Object\)](dui-xiang.md)
-  * [对象的高级查询](dui-xiang/dui-xiang-de-gao-ji-cha-xun.md)
+* [对象（Object）](dui-xiang.md)
+* [查询（Query）](cha-xun.md)
 * [实时查询](shi-shi-cha-xun.md)
 * [用户](yong-hu.md)
 * [会话](hui-hua.md)
@@ -16,5 +17,4 @@
   * [云代码](an-quan/shu-ju-zai-yun-dai-ma-zhong-de-wan-zheng-xing.md)
   * [安全概要](an-quan/an-quan-gai-yao.md)
 * [错误](cuo-wu.md)
-* [ReadMe](README.md)
 
