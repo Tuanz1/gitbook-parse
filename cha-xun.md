@@ -276,7 +276,7 @@ query.find().then(result=> {
 query.include\(\["post.author"\]\);  
 您可以通过多次调用包括多个字段来发出查询。 此功能也适用于Parse.Query助手，如first和get。
 
-##### 计数对象
+### 统计查询
 
 警告：计数查询的速率限制为每分钟最多160个请求。 他们还可以为具有超过1,000个对象的类返回不准确的结果。 因此，建议您的应用程序避免这种计数操作（例如使用计数器）。
 
@@ -295,8 +295,11 @@ query.count().then(result=> {
 });
 ```
 
-#### 复合查询
-
+### 复合查询
+复合查询
+更复杂的查询情况下，你可能需要用到组合查询。一个组合查询是多个子查询的组合(如"and或"or")。
+需要注意的是，我们不支持在组合查询的子查询中使用GeoPint或者非过滤类型的约束条件。
+#### 或查询
 如果要查找与几个检索中的一个匹配的对象，可以使用Parse.Query.or方法来构造一个查询，该查询是传入的查询的OR。例如，如果您要查找具有很多 wins，你可以做到：
 
 ```js
@@ -313,6 +316,47 @@ mainQuery.find().then(result=> {
     // 有一个错误。
 });
 ```
+#### 与查询
+如果你想查询和所有条件都符合的数据，通常只需要一次请求。你可以添加额外的条件，它实际上就是与查询：
+```ts
+var query = new Parse.Query("User");
+query.greaterThan("age", 18);
+query.greaterThan("friends", 0);
+query.find()
+  .then(function(results) {
+    // results contains a list of users both older than 18 and having friends.
+  })
+  .catch(function(error) {
+    // There was an error.
+  });
+  ```
+  但如果这个世界真的有这么简单那就好了。有时你可能需要用到与组合查询，Parse.Query.and方法可以构建一个由传入的子程序组成的与查询。比如你想查询用户年龄为16或者18，并且ta的好友少于两人的用户,你可以这样：
+  ```ts
+  var age16Query = new Parse.Query("User");
+age16Query.equalTo("age", 16);
+
+var age18Query = new Parse.Query("User");
+age18Query.equalTo("age", 18);
+
+var friends0Query = new Parse.Query("User");
+friends0Query.equalTo("friends", 0);
+
+var friends2Query = new Parse.Query("User");
+friends2Query.greaterThan("friends", 2);
+
+var mainQuery = Parse.Query.and(
+  Parse.Query.or(age16Query, age18Query),
+  Parse.Query.or(friends0Query, friends2Query)
+);
+mainQuery.find()
+  .then(function(results) {
+    // results contains a list of users in the age of 16 or 18 who have either no friends or at least 2 friends
+    // results: (age 16 or 18) and (0 or >2 friends)
+  })
+  .catch(function(error) {
+    // There was an error.
+  });
+  ```
 
 
 
