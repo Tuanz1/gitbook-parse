@@ -62,11 +62,11 @@ Parse.serverURL = 'http://localhost:8001/parse';
 
 ## 相关文章** **
 
-\[driftyco/ionic app scripts\#88\]\([https://github.com/driftyco/ionic-app-scripts/issues/88](https://github.com/driftyco/ionic-app-scripts/issues/88)
+- \[driftyco/ionic app scripts\#88\]\([https://github.com/driftyco/ionic-app-scripts/issues/88](https://github.com/driftyco/ionic-app-scripts/issues/88)
 
-\[rollup/rollup plugin commonjs\#43\]\([https://github.com/rollup/rollup-plugin-commonjs/pull/43\](https://github.com/rollup/rollup-plugin-commonjs/pull/43%29%29\)
+- \[rollup/rollup plugin commonjs\#43\]\([https://github.com/rollup/rollup-plugin-commonjs/pull/43\](https://github.com/rollup/rollup-plugin-commonjs/pull/43%29%29\)
 
-\[rollup/rollup\#594\]\([https://github.com/rollup/rollup/issues/594\](https://github.com/rollup/rollup/issues/594%29%29\)
+- \[rollup/rollup\#594\]\([https://github.com/rollup/rollup/issues/594\](https://github.com/rollup/rollup/issues/594%29%29\)
 
-\[官方\]\([http://ionicframework.com/docs/v2/resources/app-scripts/\](http://ionicframework.com/docs/v2/resources/app-scripts/%29%29\)
+- \[官方\]\([http://ionicframework.com/docs/v2/resources/app-scripts/\](http://ionicframework.com/docs/v2/resources/app-scripts/%29%29\)
 
