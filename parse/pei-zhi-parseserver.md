@@ -6,7 +6,6 @@
 
 ```sh
 # 新建个目录
-```sh
 sh <(curl -fsSL 
 https://raw.githubusercontent.com/parse-community/parse-server/master/bootstrap.sh\
 
@@ -30,12 +29,8 @@ npm start
 "cloud": "./cloud/main.js",
 "databaseURI": "mongodb://...........",
 "port":8888,
-"serverURL":"
-http://localhost:8888/parse
-",
-"publicServerURL":"
-https://{{yourdomain}}/parse
-"
+"serverURL":"http://localhost:8888/parse",
+"publicServerURL":"https://{{yourdomain}}/parse"
 }
 ```
 
