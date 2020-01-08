@@ -319,7 +319,7 @@ mainQuery.find().then(result=> {
 #### 与查询
 如果你想查询和所有条件都符合的数据，通常只需要一次请求。你可以添加额外的条件，它实际上就是与查询：
 ```ts
-var query = new Parse.Query("User");
+let query = new Parse.Query("User");
 query.greaterThan("age", 18);
 query.greaterThan("friends", 0);
 query.find()
@@ -332,16 +332,16 @@ query.find()
   ```
   但如果这个世界真的有这么简单那就好了。有时你可能需要用到与组合查询，Parse.Query.and方法可以构建一个由传入的子程序组成的与查询。比如你想查询用户年龄为16或者18，并且ta的好友少于两人的用户,你可以这样：
   ```ts
-  var age16Query = new Parse.Query("User");
+  let age16Query = new Parse.Query("User");
 age16Query.equalTo("age", 16);
 
-var age18Query = new Parse.Query("User");
+let age18Query = new Parse.Query("User");
 age18Query.equalTo("age", 18);
 
-var friends0Query = new Parse.Query("User");
+let friends0Query = new Parse.Query("User");
 friends0Query.equalTo("friends", 0);
 
-var friends2Query = new Parse.Query("User");
+let friends2Query = new Parse.Query("User");
 friends2Query.greaterThan("friends", 2);
 
 var mainQuery = Parse.Query.and(
@@ -349,11 +349,11 @@ var mainQuery = Parse.Query.and(
   Parse.Query.or(friends0Query, friends2Query)
 );
 mainQuery.find()
-  .then(function(results) {
+  .then(result=>{
     // results contains a list of users in the age of 16 or 18 who have either no friends or at least 2 friends
     // results: (age 16 or 18) and (0 or >2 friends)
-  })
-  .catch(function(error) {
+   }).
+  .catch(error=> {
     // There was an error.
   });
   ```
