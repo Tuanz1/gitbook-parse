@@ -1,4 +1,4 @@
-# ionic2 中配置parse服务
+# ionic4项目配置parse服务
 
 ## 初始化
 
@@ -16,8 +16,6 @@ Parse.initialize('demo', 'jsKey','masterKey');
 Parse.serverURL = 'http://localhost:8001/parse';
 //根据个人配置对应修改init后面两个参数可选
 ```
-
-
 
 ## Ionic4项目中使用Parse JS SDK
 
