@@ -323,10 +323,10 @@ let query = new Parse.Query("User");
 query.greaterThan("age", 18);
 query.greaterThan("friends", 0);
 query.find()
-  .then(function(results) {
+  .then(result=>{
     // results contains a list of users both older than 18 and having friends.
   })
-  .catch(function(error) {
+  .catch(error=> {
     // There was an error.
   });
   ```
