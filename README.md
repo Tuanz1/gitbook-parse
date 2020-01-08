@@ -1,6 +1,6 @@
-# Parse文档翻译
+# Parse JS SDK中文文档
 
-主要是针对Parse官方文档的翻译，部分代码转换成es6版本，然后有添加针对ionic项目中如何使用该服务的说明。
+本文主要是针对Parse JS SDK文档进行翻译，适当将Parse JS SDK与Ionic4项目进行整合。
 
 > 翻译错误的部分希望指正
 >
