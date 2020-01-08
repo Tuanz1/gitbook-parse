@@ -1,7 +1,7 @@
 # Summary
 
 * [Parse文档](parse.md)
-* [Parse Server配置](parse/pei-zhi-parseserver.md)
+* [Parse Server配置](pei-zhi-parseserver.md)
 * [对象（Object）](dui-xiang.md)
 * [查询（Query）](cha-xun.md)
 * [实时查询](shi-shi-cha-xun.md)
