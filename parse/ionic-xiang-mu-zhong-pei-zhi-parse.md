@@ -12,9 +12,9 @@ Parse.serverURL = 'yourNewServerUrl.com';
 > 实例：
 
 ```
-Parse.initialize('demo');
+Parse.initialize('demo', 'jsKey','masterKey');
 Parse.serverURL = 'http://localhost:8001/parse';
-//根据个人配置对应修改
+//根据个人配置对应修改init后面两个参数可选
 ```
 
 ### FAQ：Parse JS SDK doesn't work after rollup
