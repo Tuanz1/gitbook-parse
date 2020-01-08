@@ -16,5 +16,4 @@
   * [云代码](an-quan/shu-ju-zai-yun-dai-ma-zhong-de-wan-zheng-xing.md)
   * [安全概要](an-quan/an-quan-gai-yao.md)
 * [错误](cuo-wu.md)
-* [说明](README.md)
 
