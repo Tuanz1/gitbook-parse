@@ -1,4 +1,4 @@
-# 对象 Parse.Object {#object}
+# 对象
 
 Parse 储存的数据是利用Parse.Object 构造的，每个Parse.Object 包含兼容JSON格式的键值对。这些数据是无模式的，这意味着不需要在每个Parse.Object上指定存在的键。使用时，只需要设置需要的键值对，并在后端\(mongodb数据库中\)储存它。
 
