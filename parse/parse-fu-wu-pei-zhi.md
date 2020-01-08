@@ -1,26 +1,20 @@
-# \# 准备工作
+# 准备工作
 
-# Nginx，SSL证书，Nodejs, MongoDB
+> 安装Nginx，SSL证书，Nodejs, MongoDB
 
-# \# 1. 按照官方配置
+#  1. 按照官方配置
 
-# \`\`\`sh
+```sh
+# 新建个目录
+```sh
+sh <(curl -fsSL 
+https://raw.githubusercontent.com/parse-community/parse-server/master/bootstrap.sh\
 
-# \# 新建个目录
+npm i
+npm start
+```
 
-\`\`\`sh
-
-sh &lt;\(curl -fsSL [https://raw.githubusercontent.com/parse-community/parse-server/master/bootstrap.sh\](https://raw.githubusercontent.com/parse-community/parse-server/master/bootstrap.sh\)\)
-
-\`\`\`
-
-# npm i
-
-# npm start
-
-# \`\`\`
-
-# 其中config.json就是parse的配置文件，所有的东西都在这里配置
+这个项目下config.json就是parse的配置文件，你需要修改的配置都在这里
 
 # 
 
