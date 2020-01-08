@@ -388,8 +388,7 @@ let string = "the number is " + number;
 let date = new Date();
 let date = new Date('1995-12-17T03:24:00');
 let date = new Date(1995, 11, 17);
-let date = new Date(1995, 11, 17, 3, 24, 0);
-
+let date = new Date(1995, 11, 17, 3, 24, 0)
 let array = [string, number];
 let object = { number: number, string: string };
 let pointer = MyClassName.createWithoutData(objectId);
@@ -408,7 +407,6 @@ bigObject.save();
 
 我们不建议存储大量二进制数据，如图像或文档Parse.Object。Parse.Objects不应超过128千字节大小。我们建议您使用Parse.Files存储图像，文档和其他类型的文件。您可以通过实例化Parse.File对象并将其设置在字段上来实现。
 
-> 有关详细信息，请参阅文件。  
 > 有关Parse如何处理数据的更多信息，请查看官方数据文档。
 
 
