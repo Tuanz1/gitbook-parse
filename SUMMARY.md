@@ -1,10 +1,8 @@
 # Summary
 
 * [Parse文档](parse.md)
-  * [ionic 项目中配置parse](parse/ionic-xiang-mu-zhong-pei-zhi-parse.md)
-  * [parse server配置](parse/parse-fu-wu-pei-zhi.md)
+* [Parse Server配置](parse/pei-zhi-parseserver.md)
 * [对象\(Object\)](dui-xiang.md)
-  * [对象的基本操作](dui-xiang/baocun-objects.md)
   * [对象的高级查询](dui-xiang/dui-xiang-de-gao-ji-cha-xun.md)
 * [实时查询](shi-shi-cha-xun.md)
 * [用户](yong-hu.md)
