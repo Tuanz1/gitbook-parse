@@ -136,7 +136,9 @@ gameScore.save(null).then(gameScore=>{
 });
 ```
 
-> parse-dashboard中看到的结果![](/assets/example1.png)
+ parse-dashboard中看到的结果
+
+![](/assets/example1.png)
 
 这里有两件事要注意。 在运行此代码之前，你不必配置或设置名为GameScore的新类。 你的Parse应用程序首次遇到时，会为您轻松创建此类。
 
