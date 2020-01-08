@@ -41,5 +41,36 @@ https://{{yourdomain}}/parse
 
 > publicServerURL是按照你配置nginx的https访问修改的
 
+# 3. 配置Nginx
 
+略
+
+# 4. 配置Parse-Dasboard
+
+```sh
+parse-dashboard --config config.json
+```
+
+config.json文件大概是这样写的
+
+```json
+{
+    "apps": [{
+    "serverURL": "http://{{yourserverURL}}/parse",
+    "appId": "",
+    "masterKey": "",
+    "appName": ""
+    }],
+
+   "users": [
+           {
+          "user":"admin",
+          "pass":"admin"
+           }
+       ]
+}
+
+```
+
+具体的配置可以参考官方文档
 
