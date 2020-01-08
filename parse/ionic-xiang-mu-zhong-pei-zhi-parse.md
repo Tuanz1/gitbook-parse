@@ -22,6 +22,8 @@ Parse.serverURL = 'http://localhost:8001/parse';
 ** 错误提示 **
 
 > Super expression must either be null or a function, not undefined.
+>
+> 无法使用Parse这个类
 
 ** 相关文章 **
 
